@@ -1,0 +1,19 @@
+name: portainer
+
+services:
+  portainer-ce:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      #- "9002:8000"  # Host port 9001 maps to container port 8000 for reverse tunneling
+      - "9001:9000"  # Host port 9000 maps to container port 9000 for the Portainer UI
+      - "9443:9443"  # Port 9443 for HTTPS
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+volumes:
+  portainer_data:
+    external: true
+    name: portainer_data
