@@ -1,0 +1,34 @@
+   services:
+     open-webui-lusofona:
+       image: ghcr.io/open-webui/open-webui:main
+       container_name: open-webui-lusofona
+       ports:
+         - "3000:8080"
+       environment:
+         - OPENAI_API_KEY=
+         - GROQ_API_KEY=
+         - OLLAMA_BASE_URL=http://ollama:11434
+         - WEBUI_SECRET_KEY=
+       volumes:
+         - open-webui:/app/backend/data
+         - ./edited-files/app/backend/static/favicon.png:/app/backend/static/favicon.png
+         - ./edited-files/app/backend/static/logo.png:/app/backend/static/logo.png
+         - ./edited-files/app/backend/static/splash.png:/app/backend/static/splash.png
+         - ./edited-files/app/backend/utils/logo.png:/app/backend/utils/logo.png
+         - ./edited-files/app/build/favicon.png:/app/build/favicon.png
+         - ./edited-files/app/build/static/favicon.png:/app/build/static/favicon.png
+         - ./edited-files/app/build/static/logo.png:/app/build/static/logo.png
+         - ./edited-files/app/build/static/splash.png:/app/build/static/splash.png
+         - ./edited-files/app/build/themes/bluebusiness.css:/app/build/themes/bluebusiness.css
+         - ./edited-files/app/build/index.html:/app/build/index.html
+       restart: always
+       networks:
+         - ulht-web-ui_default
+
+   volumes:
+     open-webui:
+       external: true
+
+   networks:
+     ulht-web-ui_default:
+       external: true

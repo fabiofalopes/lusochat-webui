@@ -1,0 +1,132 @@
+.blue-business * {
+    color: #4a5a6a !important;
+    stroke: #3a7ca5 !important;
+}
+
+.blue-business .app > * {
+    background-color: #f0f4f8 !important;
+}
+
+.blue-business #nav {
+    background-color: #e0e9ef;
+}
+
+.blue-business .py-2\.5.my-auto.flex.flex-col.justify-between.h-screen {
+    background: #d8e3ea;
+}
+
+.blue-business .bg-white.dark\:bg-gray-800 {
+    background: #e8f0f5;
+}
+
+.blue-business .w-4.h-4 {
+    fill: #5faac2;
+}
+
+.blue-business #chat-textarea {
+    background: #d0dae2;
+    margin: 0.3rem;
+    padding: 0.5rem;
+}
+
+.blue-business .bg-gradient-to-t.from-white.dark\:from-gray-800.from-40\%.pb-2 {
+    background: #e8f0f5 !important;
+    padding-top: 0.6rem;
+}
+
+.blue-business
+    .text-white.bg-gray-100.dark\:text-gray-800.dark\:bg-gray-600.disabled.transition.rounded-lg.p-1.mr-0\.5.w-7.h-7.self-center {
+    background-color: #b0c5d4;
+    transition: background-color 0.2s ease-out linear;
+}
+
+.blue-business
+    .bg-black.text-white.hover\:bg-gray-900.dark\:bg-white.dark\:text-black.dark\:hover\:bg-gray-100.transition.rounded-lg.p-1.mr-0\.5.w-7.h-7.self-center {
+    background-color: #35779b;
+    transition: background-color 0.2s ease-out linear;
+}
+
+.blue-business
+    .bg-black.text-white.hover\:bg-gray-900.dark\:bg-white.dark\:text-black.dark\:hover\:bg-gray-100.transition.rounded-lg.p-1.mr-0\.5.w-7.h-7.self-center
+    > * {
+    fill: #6bb5d6 !important;
+    transition: fill 0.2s ease-out linear;
+}
+
+.blue-business
+    .w-full.flex.justify-between.rounded-md.px-3.py-2.hover\:bg-gray-900.bg-gray-900.transition.whitespace-nowrap.text-ellipsis {
+    background-color: #49788b;
+    font-weight: bold;
+}
+
+.blue-business .hover\:bg-gray-900:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(87 108 127 / var(--tw-bg-opacity));
+}
+
+.blue-business .text-xs.text-gray-700.uppercase.bg-gray-50.dark\:bg-gray-700.dark\:text-gray-400 {
+    background-color: #3c4f61;
+}
+
+.blue-business .scrollbar-hidden.relative.overflow-x-auto.whitespace-nowrap.svelte-3g4avz {
+    border-radius: 16px 16px 0 0;
+}
+
+.blue-business .base.enter.svelte-ug60r4 {
+    background-color: #35779b;
+}
+
+.blue-business .message.svelte-1nauejd {
+    color: #e0f2fb !important;
+}
+
+.blue-business #dropdownDots {
+    background-color: #d0dae2;
+}
+
+.blue-business .flex.py-2\.5.px-3\.5.w-full.hover\:bg-gray-800.transition:hover {
+    background: #c2d2dd;
+}
+
+.blue-business
+    .m-auto.rounded-xl.max-w-full.w-\[40rem\].mx-2.bg-gray-50.dark\:bg-gray-900.shadow-3xl {
+    background-color: #e8f0f5;
+}
+
+.blue-business
+    .w-full.rounded.p-4.text-sm.dark\:text-gray-300.dark\:bg-gray-800.outline-none.resize-none {
+    background-color: #d0dae2;
+}
+
+.blue-business
+    .w-full.rounded.py-2.px-4.text-sm.dark\:text-gray-300.dark\:bg-gray-800.outline-none.svelte-1vx7r9s {
+    background-color: #d0dae2;
+}
+
+.blue-business
+    .px-2\.5.py-2\.5.min-w-fit.rounded-lg.flex-1.md\:flex-none.flex.text-right.transition.bg-gray-200.dark\:bg-gray-700 {
+    background-color: #d8e3ea;
+}
+
+.blue-business
+    .px-2\.5.py-2\.5.min-w-fit.rounded-lg.flex-1.md\:flex-none.flex.text-right.transition.hover\:bg-gray-300.dark\:hover\:bg-gray-800:hover {
+    background-color: #c2d2dd;
+}
+
+.blue-business .px-4.py-2.bg-emerald-600.hover\:bg-emerald-700.text-gray-100.transition.rounded {
+    background-color: #5faac2;
+}
+
+.blue-business #chat-search > * {
+    background-color: #d0dae2 !important;
+}
+
+.blue-business .svelte-1ee93ns {
+    --primary: #3a7ca5 !important;
+    --secondary: #f0f4f8 !important;
+}
+
+.blue-business .svelte-11kvm4p {
+    --primary: #35779b !important;
+    --secondary: #f0f4f8 !important;
+}

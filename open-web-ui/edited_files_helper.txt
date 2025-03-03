@@ -1,0 +1,18 @@
+# Icons
+
+/app/backend/static/favicon.png
+/app/backend/static/logo.png
+/app/backend/static/splash.png
+
+/app/backend/utils/logo.png
+
+/app/build/favicon.png
+
+/app/build/static/favicon.png
+/app/build/static/splash.png
+/app/build/static/splash-dark.png
+
+
+# Theme
+
+/app/build/themes/bluebusiness.css
