@@ -44,7 +44,7 @@
          - ./edited-files/app/build/static/logo.png:/app/build/static/logo.png
          - ./edited-files/app/build/static/splash.png:/app/build/static/splash.png
          - ./edited-files/app/build/themes/bluebusiness.css:/app/build/themes/bluebusiness.css
-         - ./edited-files/app/build/index.html:/app/build/index.html
+         #- ./edited-files/app/build/index.html:/app/build/index.html
        restart: always
        networks:
          - ulht-web-ui_default

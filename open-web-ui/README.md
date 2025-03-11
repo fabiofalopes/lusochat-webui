@@ -50,6 +50,7 @@ When requesting credentials, provide these details to the IDP team:
 - Application Name: Lusochat WebUI
 - Environment: Development
 - Redirect URI: `http://localhost:3000/api/auth/callback/openid`
+    - `http://192.168.108.80:3000/api/auth/callback/openid`
 - Required Scopes: `openid email profile`
 - Grant Type: Authorization Code Flow
 - Token Endpoint Auth Method: `client_secret_basic`
@@ -58,3 +59,6 @@ When requesting credentials, provide these details to the IDP team:
 1. Request client credentials from the IDP team
 2. Update `.env` file with provided credentials
 3. Test the authentication flow
+
+
+.well-known
