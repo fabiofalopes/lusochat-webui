@@ -8,66 +8,53 @@ docker compose -f docker-compose.yaml -f docker-compose.searxng.yaml up -d
 
 # Lusochat WebUI
 
-## Lusofona Identity Provider Integration
+A customized version of Open WebUI integrated with Lusofona's Identity Provider for authentication.
+
+## Quick Start
+
+1. Start the application with web search capability:
+```shell
+docker compose -f docker-compose.yaml -f docker-compose.searxng.yaml up -d
+```
+
+## Authentication Setup
 
 ### Overview
-The application integrates with Lusofona's Identity Provider (IDP) for user authentication and authorization. This integration allows users to log in using their Lusofona credentials.
+The application uses Lusofona's Identity Provider (IDP) for authentication. The development environment (`idp-dev.ulusofona.pt`) is already configured in the `.env` file.
 
-### Required Information for IDP Team
-When setting up the integration, the following details need to be provided to/configured with the Lusofona IDP team:
+### Current Status
+- ✅ IDP Development environment is configured
+- ✅ All required OIDC settings are defined
+- ❌ Need client credentials (ID and Secret) from IDP team
 
-1. **Application Details**
-   - Application Name: Lusochat WebUI
-   - Environment: Development/Production
-   - Redirect URI: `http://localhost:3000/api/auth/callback/openid`
-   - Application Type: Web Application
+### Required Configuration
+The following settings are already configured in the `.env` file:
 
-2. **Required Scopes**
-   - openid
-   - email
-   - profile
+```yaml
+# OIDC Base Configuration (Already Set)
+ENABLE_OAUTH_SIGNUP=true
+OAUTH_MERGE_ACCOUNTS_BY_EMAIL=true
+OAUTH_PROVIDER_NAME=LusofonaIDP
+OPENID_PROVIDER_URL=https://idp-dev.ulusofona.pt/.well-known/openid-configuration
+OAUTH_SCOPES=openid email profile
+OAUTH_RESPONSE_TYPE=code
+OAUTH_TOKEN_ENDPOINT_AUTH_METHOD=client_secret_basic
 
-3. **Authentication Settings**
-   - Grant Type: Authorization Code Flow
-   - Token Endpoint Auth Method: client_secret_basic
-   - Response Type: code
-
-### Integration Checklist
-- [ ] Provide application details to IDP team
-- [ ] Receive Client ID and Client Secret
-- [ ] Update docker-compose.yaml with provided credentials
-- [ ] Test authentication flow in development environment
-- [ ] Verify user information retrieval
-- [ ] Confirm email-based account linking functionality
-
-### Configuration
-The OIDC configuration is managed through environment variables in `docker-compose.yaml`. After receiving the credentials from the IDP team:
-
-1. Update the following variables:
-   ```yaml
-   - OAUTH_CLIENT_ID=<provided_client_id>
-   - OAUTH_CLIENT_SECRET=<provided_client_secret>
-   ```
-
-2. Verify the following settings match IDP requirements:
-   ```yaml
-   - OAUTH_SCOPES=openid email profile
-   - OAUTH_RESPONSE_TYPE=code
-   - OAUTH_TOKEN_ENDPOINT_AUTH_METHOD=client_secret_basic
-   ```
-
-### Testing the Integration
-1. Start the application with updated credentials
-2. Navigate to the login page
-3. Click on "Login with LusofonaIDP"
-4. Verify successful authentication
-5. Confirm user information is correctly retrieved
-
-### Support
-For integration support, contact:
-- Lusofona IDP Team: [Contact Information]
-- Application Development Team: [Contact Information]
-
+# Credentials (Need to be provided)
+OAUTH_CLIENT_ID=YOUR_OIDC_CLIENT_ID
+OAUTH_CLIENT_SECRET=YOUR_OIDC_CLIENT_SECRET
 ```
-https://idp-dev.ulusofona.pt/idp/profile/oidc/configuration
-```
+
+### Application Details for IDP Team
+When requesting credentials, provide these details to the IDP team:
+- Application Name: Lusochat WebUI
+- Environment: Development
+- Redirect URI: `http://localhost:3000/api/auth/callback/openid`
+- Required Scopes: `openid email profile`
+- Grant Type: Authorization Code Flow
+- Token Endpoint Auth Method: `client_secret_basic`
+
+### Next Steps
+1. Request client credentials from the IDP team
+2. Update `.env` file with provided credentials
+3. Test the authentication flow

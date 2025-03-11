@@ -5,10 +5,34 @@
        ports:
          - "3000:8080"
        environment:
-         - OPENAI_API_KEY=
-         - GROQ_API_KEY=
-         - OLLAMA_BASE_URL=http://ollama:11434
-         - WEBUI_SECRET_KEY=
+        # API Keys (Optional - for additional AI model support)
+        - OPENAI_API_KEY=${OPENAI_API_KEY}
+        - GROQ_API_KEY=${GROQ_API_KEY}
+
+        # Ollama Configuration (Required)
+        - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+        
+        # WebUI Configuration (Required)
+        - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
+        - WEBUI_NAME=${WEBUI_NAME}
+        - GLOBAL_LOG_LEVEL=${GLOBAL_LOG_LEVEL}
+
+        # Branding Configuration (Optional)
+        - CUSTOM_NAME=${CUSTOM_NAME}
+        
+        # OIDC Configuration (Required for authentication)
+        - ENABLE_OAUTH_SIGNUP=${ENABLE_OAUTH_SIGNUP}
+        - OAUTH_MERGE_ACCOUNTS_BY_EMAIL=${OAUTH_MERGE_ACCOUNTS_BY_EMAIL}
+        - OAUTH_PROVIDER_NAME=${OAUTH_PROVIDER_NAME}
+        - OPENID_PROVIDER_URL=${OPENID_PROVIDER_URL}
+        - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID}
+        - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET}
+        - OAUTH_SCOPES=${OAUTH_SCOPES}
+        
+        # Authentication Flow Settings (Required for OIDC)
+        - OAUTH_RESPONSE_TYPE=${OAUTH_RESPONSE_TYPE}
+        - OAUTH_TOKEN_ENDPOINT_AUTH_METHOD=${OAUTH_TOKEN_ENDPOINT_AUTH_METHOD}
+       
        volumes:
          - open-webui:/app/backend/data
          - ./edited-files/app/backend/static/favicon.png:/app/backend/static/favicon.png
