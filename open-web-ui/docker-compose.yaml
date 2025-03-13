@@ -1,59 +1,76 @@
-   services:
-     open-webui-lusofona:
-       image: ghcr.io/open-webui/open-webui:main
-       container_name: open-webui-lusofona
-       ports:
-         - "3000:8080"
-       environment:
-        # API Keys (Optional - for additional AI model support)
-        - OPENAI_API_KEY=${OPENAI_API_KEY}
-        - GROQ_API_KEY=${GROQ_API_KEY}
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      #- "80:80"
+      - "443:443"
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - open-webui-lusofona
+    networks:
+      - ulht-web-ui_default
+    restart: always
 
-        # Ollama Configuration (Required)
-        - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
-        
-        # WebUI Configuration (Required)
-        - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
-        - WEBUI_NAME=${WEBUI_NAME}
-        - GLOBAL_LOG_LEVEL=${GLOBAL_LOG_LEVEL}
+  open-webui-lusofona:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: open-webui-lusofona
+    environment:
+      # API Keys (Optional - for additional AI model support)
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GROQ_API_KEY=${GROQ_API_KEY}
 
-        # Branding Configuration (Optional)
-        - CUSTOM_NAME=${CUSTOM_NAME}
-        
-        # OIDC Configuration (Required for authentication)
-        - ENABLE_OAUTH_SIGNUP=${ENABLE_OAUTH_SIGNUP}
-        - OAUTH_MERGE_ACCOUNTS_BY_EMAIL=${OAUTH_MERGE_ACCOUNTS_BY_EMAIL}
-        - OAUTH_PROVIDER_NAME=${OAUTH_PROVIDER_NAME}
-        - OPENID_PROVIDER_URL=${OPENID_PROVIDER_URL}
-        - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID}
-        - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET}
-        - OAUTH_SCOPES=${OAUTH_SCOPES}
-        
-        # Authentication Flow Settings (Required for OIDC)
-        - OAUTH_RESPONSE_TYPE=${OAUTH_RESPONSE_TYPE}
-        - OAUTH_TOKEN_ENDPOINT_AUTH_METHOD=${OAUTH_TOKEN_ENDPOINT_AUTH_METHOD}
-       
-       volumes:
-         - open-webui:/app/backend/data
-         - ./edited-files/app/backend/static/favicon.png:/app/backend/static/favicon.png
-         - ./edited-files/app/backend/static/logo.png:/app/backend/static/logo.png
-         - ./edited-files/app/backend/static/splash.png:/app/backend/static/splash.png
-         - ./edited-files/app/backend/utils/logo.png:/app/backend/utils/logo.png
-         - ./edited-files/app/build/favicon.png:/app/build/favicon.png
-         - ./edited-files/app/build/static/favicon.png:/app/build/static/favicon.png
-         - ./edited-files/app/build/static/logo.png:/app/build/static/logo.png
-         - ./edited-files/app/build/static/splash.png:/app/build/static/splash.png
-         - ./edited-files/app/build/themes/bluebusiness.css:/app/build/themes/bluebusiness.css
-         #- ./edited-files/app/build/index.html:/app/build/index.html
-       restart: always
-       networks:
-         - ulht-web-ui_default
+      # Ollama Configuration (Required)
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      
+      # WebUI Configuration (Required)
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
+      - WEBUI_NAME=${WEBUI_NAME}
+      - GLOBAL_LOG_LEVEL=${GLOBAL_LOG_LEVEL}
 
-   volumes:
-     open-webui:
-       external: true
+      # Branding Configuration (Optional)
+      - CUSTOM_NAME=${CUSTOM_NAME}
+      
+      # OIDC Configuration (Required for authentication)
+      - ENABLE_OAUTH_SIGNUP=${ENABLE_OAUTH_SIGNUP}
+      - OAUTH_MERGE_ACCOUNTS_BY_EMAIL=${OAUTH_MERGE_ACCOUNTS_BY_EMAIL}
+      - OAUTH_PROVIDER_NAME=${OAUTH_PROVIDER_NAME}
+      - OPENID_PROVIDER_URL=${OPENID_PROVIDER_URL}
+      - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID}
+      - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET}
+      - OAUTH_SCOPES=${OAUTH_SCOPES}
+      
+      # Authentication Flow Settings (Required for OIDC)
+      - OAUTH_RESPONSE_TYPE=${OAUTH_RESPONSE_TYPE}
+      - OAUTH_TOKEN_ENDPOINT_AUTH_METHOD=${OAUTH_TOKEN_ENDPOINT_AUTH_METHOD}
+      - WEBUI_SESSION_COOKIE_SAME_SITE=${WEBUI_SESSION_COOKIE_SAME_SITE}
+      - WEBUI_AUTH_COOKIE_SAME_SITE=${WEBUI_AUTH_COOKIE_SAME_SITE}
+      - WEBUI_SESSION_COOKIE_SECURE=${WEBUI_SESSION_COOKIE_SECURE}
+      - WEBUI_AUTH_COOKIE_SECURE=${WEBUI_AUTH_COOKIE_SECURE}
+    
+    volumes:
+      - open-webui:/app/backend/data
+      # Still mounting image assets from edited-files
+      - ./edited-files/app/backend/static/favicon.png:/app/backend/static/favicon.png
+      - ./edited-files/app/backend/static/logo.png:/app/backend/static/logo.png
+      - ./edited-files/app/backend/static/splash.png:/app/backend/static/splash.png
+      - ./edited-files/app/backend/utils/logo.png:/app/backend/utils/logo.png
+      - ./edited-files/app/build/favicon.png:/app/build/favicon.png
+      - ./edited-files/app/build/static/favicon.png:/app/build/static/favicon.png
+      - ./edited-files/app/build/static/logo.png:/app/build/static/logo.png
+      - ./edited-files/app/build/static/splash.png:/app/build/static/splash.png
+      - ./edited-files/app/build/themes/bluebusiness.css:/app/build/themes/bluebusiness.css
+    restart: always
+    networks:
+      - ulht-web-ui_default
 
-   networks:
-     ulht-web-ui_default:
-       external: true
+volumes:
+  open-webui:
+    external: true
 
+networks:
+  ulht-web-ui_default:
+    external: true 

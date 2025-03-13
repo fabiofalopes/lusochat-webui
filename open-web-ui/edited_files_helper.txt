@@ -1,5 +1,8 @@
-# Icons
+# Custom Files Reference
 
+## Branding Assets
+
+### Icons and Logos
 /app/backend/static/favicon.png
 /app/backend/static/logo.png
 /app/backend/static/splash.png
@@ -12,7 +15,10 @@
 /app/build/static/splash.png
 /app/build/static/splash-dark.png
 
-
-# Theme
-
+### Theme
 /app/build/themes/bluebusiness.css
+
+## Notes
+- The index.html file is modified automatically by the modify-index.sh script
+- We no longer directly modify the index.html file as it's not compatible with the latest Svelte version
+- All branding changes are applied during the Docker build process
