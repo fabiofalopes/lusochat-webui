@@ -1,0 +1,77 @@
+<!-- Disclaimer HTML Structure -->
+<div id="lusochat-disclaimer" class="disclaimer-container">
+  <div class="disclaimer-box">
+    <p class="warning">⚠️ Lusochat encontra-se em fase de testes</p>
+    <p class="main-text">Para aceder utilize o login institucional da Universidade Lusófona.</p>
+    <p class="sub-text">Clique no botão de login com LusofonaIDP e introduza as suas credenciais habituais de email.</p>
+  </div>
+</div>
+
+<!-- Disclaimer Styles -->
+<style>
+  .disclaimer-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+  }
+
+  .disclaimer-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 0 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .warning {
+    color: #dc2626;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+  }
+
+  .main-text {
+    color: #475569;
+    font-size: 14px;
+    margin: 0 0 8px 0;
+  }
+
+  .sub-text {
+    color: #64748b;
+    font-size: 13px;
+    margin: 0;
+  }
+
+  /* Dark mode styles */
+  html.dark .disclaimer-box {
+    background-color: #1e293b;
+    border-color: #334155;
+  }
+
+  html.dark .warning {
+    color: #ef4444;
+  }
+
+  html.dark .main-text {
+    color: #e2e8f0;
+  }
+
+  html.dark .sub-text {
+    color: #94a3b8;
+  }
+</style>
+
+<!-- Optional fade effect -->
+<script>
+  setTimeout(function() {
+    const disclaimer = document.getElementById('lusochat-disclaimer');
+    if (disclaimer) {
+      disclaimer.style.opacity = '0.7';
+    }
+  }, 5000);
+</script> 
