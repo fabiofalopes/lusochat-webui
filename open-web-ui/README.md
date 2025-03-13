@@ -81,7 +81,9 @@ When requesting credentials, provide these details to the IDP:
 - Environment: Development/Production
 - Redirect URI: `https://your-domain/oauth/oidc/callback`
   - For local testing: `https://<ip>:<port>/oauth/oidc/callback`
-  - Nginx: `https://192.168.x.x:443/oauth/oidc/callback` ???
+  - Nginx: 
+   - `https://192.168.x.x:443/oauth/oidc/callback` ???
+   - `https://localhost/oauth/LusofonaIDP/callback` ???
 - Required Scopes: `openid email profile`
 - Grant Type: Authorization Code Flow
 - Token Endpoint Auth Method: `client_secret_basic`
