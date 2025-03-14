@@ -34,6 +34,9 @@ services:
       # Branding Configuration (Optional)
       - CUSTOM_NAME=${CUSTOM_NAME}
       
+      # Login Configuration
+      - ENABLE_LOGIN_FORM=${ENABLE_LOGIN_FORM}
+      
       # OIDC Configuration (Required for authentication)
       - ENABLE_OAUTH_SIGNUP=${ENABLE_OAUTH_SIGNUP}
       - OAUTH_MERGE_ACCOUNTS_BY_EMAIL=${OAUTH_MERGE_ACCOUNTS_BY_EMAIL}
@@ -42,6 +45,11 @@ services:
       - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID}
       - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET}
       - OAUTH_SCOPES=${OAUTH_SCOPES}
+      - OPENID_REDIRECT_URI=${OPENID_REDIRECT_URI}
+      - OAUTH_ENABLED=${OAUTH_ENABLED}
+      - OAUTH_AUTHORIZE_URL=${OAUTH_AUTHORIZE_URL}
+      - OAUTH_TOKEN_URL=${OAUTH_TOKEN_URL}
+      - OAUTH_REDIRECT_PATH=${OAUTH_REDIRECT_PATH}
       
       # Authentication Flow Settings (Required for OIDC)
       - OAUTH_RESPONSE_TYPE=${OAUTH_RESPONSE_TYPE}
